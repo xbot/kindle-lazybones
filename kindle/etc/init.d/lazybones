@@ -1,0 +1,19 @@
+#! /bin/sh
+# /etc/init.d/lazybones
+
+case "$1" in
+  start)
+    echo "Starting lazybones "
+    iptables -A INPUT -p TCP --dport 8080 -j ACCEPT
+    /opt/lazybones/srv.py &
+    ;;
+  stop)
+    echo "Stopping donie "
+    kill $(pgrep -f lazybones)
+    ;;
+  *)
+    echo "Usage: /etc/init.d/lazybones {start|stop}"
+    exit 1
+    ;;
+esac
+exit 0

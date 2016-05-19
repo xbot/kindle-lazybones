@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Kindle Lazybones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/jquery.mobile.min.css">
+    <script src="static/jquery.min.js"></script>
+    <script src="static/jquery.mobile.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $("#btnPrev").click(function(event) {
+                $.ajax({url:'/prevPage'});
+                event.preventDefault();
+            });
+            $("#btnNext").click(function(event) {
+                $.ajax({url:'/nextPage'});
+                event.preventDefault();
+            });
+
+            if (typeof(window.orientation) != 'undefined') {
+                if (!window.orientation)
+                    LayoutPortrait();
+                else
+                    LayoutLandscape();
+            } else {
+                LayoutPortrait();
+            }
+        });
+        
+        $(window).bind("orientationchange", function(event) { 
+            if(event.orientation){ 
+                if(event.orientation == 'portrait')
+                    LayoutPortrait();
+                else if(event.orientation == 'landscape')
+                    LayoutLandscape();
+            } 
+        }); 
+
+        function LayoutPortrait() {
+            $('button').removeClass('ui-btn-inline');
+            var ht = $('body').height()/2 - 35;
+            $('button').height(ht);
+            $('button').width('');
+        }
+
+        function LayoutLandscape() {
+            $('button').addClass('ui-btn-inline');
+            var ht = $('body').height() - 40;
+            $('button').height(ht);
+            var wt = $('body').width()/2 - 50;
+            $('button').width(wt);
+        }
+
+    </script>
+</head>
+<body style="text-align: center;">
+    <button id="btnPrev" class="ui-button ui-shadow">Previous Page</button>
+    <button id="btnNext" class="ui-button ui-shadow">Next Page</button>
+</body>
+</html>
