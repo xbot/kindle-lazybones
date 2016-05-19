@@ -1,6 +1,5 @@
 # Kindle Lazybones
 
-<pre>
      .-.     _
     (   `. .' )
      `\  `  .'
@@ -16,7 +15,6 @@
      .'     \
     (    ,   )
      '--' '-'
-</pre>
 
 Remote controlling utilities for kindle.
 
