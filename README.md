@@ -25,6 +25,7 @@ Remote controlling utilities for Kindle.
 ## Issues
 
   - Currently only Kindle PaperWhite is supported, PW2/PW3 are not yet.
+  - Kindle still goes to sleep after 10 minutes, a temporary solution is running the searchbox command `~ds` to disable screensaver, but only a restart can resume it. The other way is changing 10 minutes to longer by modifying `/etc/kdb/system/daemon/powerd/t1_timeout`, but it's readonly although I've run `mntroot rw`.
   - Button sizes won't be adjusted correctly when the orientation of Android smartphones changes (*from landscape to portrait or vice versa*), a temporary solution is refreshing the page. iOS devices don't have this problem.
 
 ## Project Architechture
